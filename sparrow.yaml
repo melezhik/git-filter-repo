@@ -1,0 +1,17 @@
+tasks:
+  -
+    name: install_python
+    # install Python dependencies
+    plugin: sparkyci-package-python
+  - 
+    name: unit tests
+    language: Bash
+    default: true
+    depends:
+      -
+        name: install_python
+    code: |
+      set -e
+      cd source/
+      chmod a+x t/run_tests
+      t/run_tests -q -v -x
